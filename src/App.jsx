@@ -7,7 +7,7 @@ export default function App() {
           <h1 className="text-2xl font-bold">CRUD OPERAÇÕES</h1>
         </div>
         <p className="  mt-4 text-black ">LOGIN</p>
-        <p className="text-gray-400 text-xs w-44 text-center">INSIRA SUAS CREDENCIAIS PARA ACESSAR SUA CONTA</p>
+        <p className="text-gray-400 text-xs text-center">INSIRA SUAS CREDENCIAIS PARA ACESSAR SUA CONTA</p>
         <br />
 
         <div className= " w-full">
