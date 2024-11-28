@@ -18,7 +18,7 @@ export default function App() {
           <input className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none" type="password" />
 
           <button className="w-full bg-purple-900 text-white p-1 h-9 rounded-sm">ENTRAR</button>
-          <p className=" flex justify-center text-gray-500">Esqueçeu a senha? <p className="text-white">a</p><a className=" text-purple-400 text-decoration-line: underline" href=""> Redefinir senha</a></p>
+          <p className=" flex justify-center text-sm text-gray-500 p-1">Esqueçeu a senha? <p className="text-white">a</p><a className=" text-purple-400 text-decoration-line: underline" href=""> Redefinir senha</a></p>
         </div>
 
       </div>
