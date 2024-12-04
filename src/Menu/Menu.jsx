@@ -13,7 +13,7 @@ export default function Menu() {
                 </div>
                 <div>
                   <h1 className="text-lg font-bold">Bem vindo</h1>
-                  <p className="text-sm text-purple-200">sistema de cadastro</p>
+                  <p className="text-sm text-purple-200">sistema de edição</p>
                 </div>
               </div>
               <nav className="mt-10">
@@ -37,9 +37,11 @@ export default function Menu() {
           <main className="flex-1 p-10">
             <header className="flex justify-between items-center mb-8">
               <h1 className="text-2xl font-bold text-purple-600">Lista de Alunos</h1>
+              <a href="/CriarCadastro">
               <button className="bg-purple-700 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
                 Adicionar Estudante
               </button>
+              </a>
             </header>
     
             <div className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6">

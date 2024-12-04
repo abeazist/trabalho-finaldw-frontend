@@ -24,6 +24,7 @@ export default function Cadastro() {
           <input className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none" type="text" />
 
           <button className=" text-xs w-full bg-purple-900 text-white p-1 h-9 rounded-sm">CADASTRAR</button>
+          <a href="/Menu"><p>Ir para o sistema de edição</p></a>
         </div>
 
       </div>
