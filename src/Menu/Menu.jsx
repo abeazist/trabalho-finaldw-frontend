@@ -13,15 +13,13 @@ export default function Menu() {
                 </div>
                 <div>
                   <h1 className="text-lg font-bold">Bem vindo</h1>
-                  <p className="text-sm text-purple-200">sistema dos alunos</p>
+                  <p className="text-sm text-purple-200">sistema de cadastro</p>
                 </div>
               </div>
               <nav className="mt-10">
                 <ul>
                   <li>
-                    <a
-                      className="flex items-center px-4 py-2 text-purple-600 bg-white rounded-lg font-semibold"
-                    >
+                    <a className="flex items-center px-4 py-2 text-purple-600 bg-white rounded-lg font-semibold">
                       <span>Alunos</span>
                     </a>
                   </li>
