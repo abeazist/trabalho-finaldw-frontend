@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 export function Menu() {
   console.log("Componente Menu carregado");
@@ -38,9 +38,10 @@ export function Menu() {
           </aside>
     
           <main className="flex-1 p-10">
+            
             <header className="flex justify-between items-center mb-8">
               <h1 className="text-2xl font-bold text-purple-600">Lista de Alunos</h1>
-              <Link to="cadastro" className="bg-purple-700 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
+              <Link to="/cadastro" className="bg-purple-700 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
               Adicionar Estudante
               </Link>
             </header>

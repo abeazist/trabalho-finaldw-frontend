@@ -14,7 +14,8 @@ import { Cadastro } from './CriarCadastro/Cadastro';
 
 const rotas = createBrowserRouter(
 createRoutesFromElements(
-  <Route path="/" element={<Menu />}>
+  <Route path="/">
+    <Route path="" element={<Menu />} />
     <Route path="cadastro" element={<Cadastro />} />
   </Route>
 )
