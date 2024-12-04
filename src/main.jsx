@@ -1,16 +1,16 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import Cadastro from './CriarCadastro/Cadastro';
-import Menu from './Menu/Menu';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Menu } from './Menu/Menu';
+import { Cadastro } from './CriarCadastro/Cadastro'; 
 
-
-
-
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Cadastro />
-    <Menu/>
-  </StrictMode>,
-)
+export default function App() {
+  return (
+    
+    <Router>
+      <Routes>
+        <Route path="/" element={<Menu />} />
+        <Route path="/CriarCadastro/Cadastro" element={<Cadastro />} />
+      </Routes>
+    </Router>
+  );
+}
