@@ -31,7 +31,7 @@ export default function Menu() {
             
             <div>
               <p className=" flex justify-center w-full bg-purple-700 hover:bg-purple-700 text-white py-2 px-4 rounded-lg">
-                Logout
+                Sair
               </p>
             </div>
           </aside>
