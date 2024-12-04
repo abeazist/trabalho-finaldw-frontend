@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export function Cadastro() {
-  console.log("Componente Menu carregado");
   return (
     <div className="h-screen w-screen bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
       <div className="flex flex-col items-center rounded-3xl bg-white h-[480px] w-[430px] p-6">

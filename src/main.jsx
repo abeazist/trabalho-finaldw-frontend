@@ -1,16 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import "./index.css";
+
+
 import { Menu } from './Menu/Menu';
 import { Cadastro } from './CriarCadastro/Cadastro'; 
 
-export default function App() {
-  return (
-    
-    <Router>
-      <Routes>
-        <Route path="/" element={<Menu />} />
-        <Route path="/CriarCadastro/Cadastro" element={<Cadastro />} />
-      </Routes>
-    </Router>
-  );
-}
+const rotas = createBrowserRouter(
+createRoutesFromElements(
+  <Route path="/" element={<Menu />}>
+    <Route path="cadastro" element={<Cadastro />} />
+  </Route>
+)
+)
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <RouterProvider router= {rotas}/>
+  </StrictMode>
+)
+
+
+
