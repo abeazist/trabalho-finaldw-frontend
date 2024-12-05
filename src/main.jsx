@@ -11,12 +11,14 @@ import "./index.css";
 
 import { Menu } from './Menu/Menu';
 import { Cadastro } from './CriarCadastro/Cadastro'; 
+import Editar from "./Editar/Editar";
 
 const rotas = createBrowserRouter(
 createRoutesFromElements(
   <Route path="/">
     <Route path="" element={<Menu />} />
     <Route path="cadastro" element={<Cadastro />} />
+    <Route path="edicao" element={<Editar />} />
   </Route>
 )
 )
