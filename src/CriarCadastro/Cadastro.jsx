@@ -25,7 +25,7 @@ export function Cadastro() {
     console.log("dados enviados")
     
     try {
-      const resposta = await fetch("https://trabalho-finaldw-backend.onrender.com/usuarios", {
+      const resposta = await fetch("http://trabalho-finaldw-backend.onrender.com/usuarios", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
