@@ -3,7 +3,7 @@ import { Trash, Pencil } from "@phosphor-icons/react";
 import { Link, Outlet } from 'react-router-dom';
 
 export function Menu() {
-  console.log("Componente Menu carregado");
+  
 
       return (
         

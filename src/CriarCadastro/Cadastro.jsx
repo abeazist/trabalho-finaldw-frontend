@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export function Cadastro() {
+  console.log("oii")
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -21,7 +22,7 @@ export function Cadastro() {
       endereco
     };
     try {
-      const resposta = await fetch("http://trabalho-finaldw-backend.onrender.com/usuarios",{
+      const resposta = await fetch("https://trabalho-finaldw-backend.onrender.com/usuarios",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,6 +30,7 @@ export function Cadastro() {
         body: JSON.stringify(usuario)
       });
       if (resposta.status === 201){
+        console.log('passei')
         alert("Cadastro concluído com sucesso!!");
   
         setNome("");
@@ -36,7 +38,7 @@ export function Cadastro() {
         setTelefone("");
         setEndereco("");
       }else {
-        alert("Erro ao cadastrar: ${resposta.status} ")
+        alert(`Erro ao cadastrar: ${resposta.status}`);
       }
       
        //A ok propriedade somente leitura da Responseinterface contém um booleano informando se a resposta foi bem-sucedida (status no intervalo 200-299) ou não. Valor booleano
@@ -88,12 +90,12 @@ export function Cadastro() {
           onChange={(event) => setEndereco(event.target.value)}
           value={endereco} 
           className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none" type="text" />
-          </form>
-          
-
           <button
           type="submit"
           className=" text-xs w-full bg-purple-900 text-white p-1 h-9 rounded-sm">CADASTRAR</button>
+          </form>
+          
+
 
           <a className="flex justify-center text-purple-600 py-1 text-sm" href="/"><p>IR PARA O SISTEMA DE EDIÇÃO</p></a>
         </div>
