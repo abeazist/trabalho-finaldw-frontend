@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Log } from "@phosphor-icons/react";
 
 export function Cadastro() {
   console.log("oii")
@@ -21,14 +22,17 @@ export function Cadastro() {
       telefone,
       endereco
     };
+    console.log("dados enviados")
+    
     try {
-      const resposta = await fetch("https://trabalho-finaldw-backend.onrender.com/usuarios",{
+      const resposta = await fetch("https://trabalho-finaldw-backend.onrender.com/usuarios", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(usuario)
       });
+      
       if (resposta.status === 201){
         console.log('passei')
         alert("Cadastro concluído com sucesso!!");
