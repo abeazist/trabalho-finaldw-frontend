@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Log } from "@phosphor-icons/react";
 
 export function Cadastro() {
-  console.log("oii")
 
   const [nome, setNome] = useState("")
   const [email, setEmail] = useState("")
@@ -22,10 +21,10 @@ export function Cadastro() {
       telefone,
       endereco
     };
-    console.log("dados enviados")
+    
     
     try {
-      const resposta = await fetch("http://trabalho-finaldw-backend.onrender.com/usuarios", {
+      const resposta = await fetch("https://trabalho-finaldw-backend.onrender.com/usuarios", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +46,7 @@ export function Cadastro() {
       
        //A ok propriedade somente leitura da Responseinterface contém um booleano informando se a resposta foi bem-sucedida (status no intervalo 200-299) ou não. Valor booleano
     } catch (error) {
-      console.log("Erro ao conectar c servidos:", error);
+      console.log("Erro ao conectar c servidor:", error);
       alert("Erro ao conectar com o servidor.")
     };
   }
