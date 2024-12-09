@@ -58,7 +58,8 @@ export default function Editar(){
                         onChange={(e) => setEndereco(e.target.value)}
                     />
 
-                    <button className=" text-xs w-full bg-purple-900 text-white p-1 h-9 rounded-sm">CONFIRMAR</button>
+                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-3 rounded-sm">CANCELAR</button>
+                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-5 mr-3 rounded-sm">CONFIRMAR</button>
                 </div>
 
             </div>
