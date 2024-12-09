@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 export default function Editar(){
 
+
+
     const [nome, setNome] = useState("Ana")
     const [email, setEmail] = useState("ana@gmail.com")
     const [telefone, setTelefone] = useState("999022221")
@@ -10,7 +12,7 @@ export default function Editar(){
 
     return(
         <div className="h-screen w-screen bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
-            <div className="flex flex-col items-center rounded-3xl bg-white h-[480px] w-[430px] p-6">
+            <div className="flex flex-col items-center rounded-3xl bg-white h-[550px] w-[450px] p-6">
                 <div className="flex  justify-center items-center gap-2 mt-4 w-full">
                     <div className="bg-violet-900 w-1 h-6"></div>
                     <h1 className="text-2xl font-bold">EDITAR ALUNO</h1>
