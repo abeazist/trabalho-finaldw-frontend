@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-
+import { useAlunoContext } from "../Context/AlunoContext"
 
 export default function Editar(){
-
-
 
     const [nome, setNome] = useState("Ana")
     const [email, setEmail] = useState("ana@gmail.com")
