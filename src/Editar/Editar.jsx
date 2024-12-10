@@ -1,12 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAlunoContext } from "../Context/AlunoContext"
 
 export default function Editar(){
 
-    const [nome, setNome] = useState("Ana")
-    const [email, setEmail] = useState("ana@gmail.com")
-    const [telefone, setTelefone] = useState("999022221")
-    const [endereco, setEndereco] = useState("rua x, n° 20")
+    const { alunoSelecionado } = useAlunoContext();
+    const [nome, setNome] = useState(alunoSelecionado.nome)
+    const [email, setEmail] = useState(alunoSelecionado.email)
+    const [telefone, setTelefone] = useState(alunoSelecionado.telefone)
+    const [endereco, setEndereco] = useState(alunoSelecionado.endereco)
+
+    useEffect(() => {
+        if (alunoSelecionado) {
+            setNome(alunoSelecionado.nome)
+            setEmail(alunoSelecionado.email)
+            setTelefone(alunoSelecionado.telefone)
+            setEndereco(alunoSelecionado.endereco)
+        }
+    }, [alunoSelecionado])
+
+    const handleEditar = async (event) => {
+        event.preventDefault();
+
+        const usuario = {
+            nome,
+            email,
+            telefone,
+            endereco
+        };
+
+        try {
+            await fetch(`https://trabalho-finaldw-backend.onrender.com/usuarios/${alunoSelecionado.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(usuario)
+            });
+        } catch (error) {
+            console.log("Erro ao conectar c servidor:", error);
+            alert("Erro ao conectar com o servidor.")
+        }
+    }
 
     return(
         <div className="h-screen w-screen bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
@@ -21,43 +55,51 @@ export default function Editar(){
 
                 <div className= " w-full">
                     <label className=" text-gray-500 block text-sm mb-1" htmlFor="nome">Nome</label>
-                    <input  
-                        className=" w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none" 
-                        type="text" 
+                    <input
+                        className=" w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none"
+                        type="text"
                         id = "nome"
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}
                     />
 
                     <label className=" text-gray-500 block text-sm mb-1" htmlFor="email">Email</label>
-                    <input 
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none" 
-                        type="email" 
+                    <input
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none"
+                        type="email"
                         id = "email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <label className=" text-gray-500 block text-sm mb-1" htmlFor="telefone">Telefone </label>
-                    <input 
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none" 
-                        type="text" 
+                    <input
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none"
+                        type="text"
                         id = "telefone"
                         value={telefone}
                         onChange={(e) => setTelefone(e.target.value)}
                     />
 
                     <label className=" text-gray-500 block text-sm mb-1" htmlFor="text">Endereço</label>
-                    <input 
-                        className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none" 
-                        type="text" 
+                    <input
+                        className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none"
+                        type="text"
                         id = "endereco"
                         value={endereco}
                         onChange={(e) => setEndereco(e.target.value)}
                     />
 
-                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-3 rounded-sm">CANCELAR</button>
-                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-5 mr-3 rounded-sm">CONFIRMAR</button>
+                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-3 rounded-sm">
+                        <a href="/">
+                            CANCELAR
+                        </a>
+                    </button>
+                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-5 mr-3 rounded-sm" type="submit" onChange={handleEditar}>
+                        <a href="/">
+                            CONFIRMAR
+                        </a>
+                    </button>
                 </div>
 
             </div>
@@ -65,5 +107,5 @@ export default function Editar(){
         </div>
     );
 
-    
+
 }
