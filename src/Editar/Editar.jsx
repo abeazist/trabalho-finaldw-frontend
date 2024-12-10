@@ -4,10 +4,10 @@ import { useAlunoContext } from "../Context/AlunoContext"
 export default function Editar(){
 
     const { alunoSelecionado } = useAlunoContext();
-    const [nome, setNome] = useState(alunoSelecionado.nome)
-    const [email, setEmail] = useState(alunoSelecionado.email)
-    const [telefone, setTelefone] = useState(alunoSelecionado.telefone)
-    const [endereco, setEndereco] = useState(alunoSelecionado.endereco)
+    const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("")
+    const [telefone, setTelefone] = useState("")
+    const [endereco, setEndereco] = useState("")
 
     useEffect(() => {
         if (alunoSelecionado) {
@@ -29,17 +29,23 @@ export default function Editar(){
         };
 
         try {
-            await fetch(`https://trabalho-finaldw-backend.onrender.com/usuarios/${alunoSelecionado.id}`, {
+            const response = await fetch(`https://trabalho-finaldw-backend.onrender.com/usuarios/${alunoSelecionado.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(usuario)
-            });
+            })
+            if (response.ok) {
+                alert("Aluno atualizado com sucesso!")
+                window.location.href = "/"
+            } else {
+                throw new Error("Falha ao atualizar o aluno.")
+            }
         } catch (error) {
-            console.log("Erro ao conectar c servidor:", error);
-            alert("Erro ao conectar com o servidor.")
-        }
+        console.error("Erro ao conectar com o servidor:", error)
+        alert("Erro ao atualizar aluno. Tente novamente mais tarde.")
+    }
     }
 
     return(
@@ -53,7 +59,7 @@ export default function Editar(){
                 <p className="text-gray-400 text-xs text-center">EDITE OS DADOS A SEGUIR PARA CONCLUIR AS ALTERAÇÕES</p>
                 <br />
 
-                <div className= " w-full">
+                <form className= " w-full" onSubmit={handleEditar}>
                     <label className=" text-gray-500 block text-sm mb-1" htmlFor="nome">Nome</label>
                     <input
                         className=" w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none"
@@ -90,17 +96,13 @@ export default function Editar(){
                         onChange={(e) => setEndereco(e.target.value)}
                     />
 
-                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-3 rounded-sm">
-                        <a href="/">
-                            CANCELAR
-                        </a>
+                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-3 rounded-sm" onClick={() => (window.location.href = "/")}>
+                        CANCELAR
                     </button>
-                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-5 mr-3 rounded-sm" type="submit" onChange={handleEditar}>
-                        <a href="/">
+                    <button className=" text-xs w-44 bg-purple-900 text-white p-1 h-9 ml-5 mr-3 rounded-sm" >
                             CONFIRMAR
-                        </a>
                     </button>
-                </div>
+                </form>
 
             </div>
 
