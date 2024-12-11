@@ -5,6 +5,7 @@ import { useAlunoContext } from "../Context/AlunoContext";
 
 export function Menu() {
   const [alunos, setAlunos] = useState([]);
+  const { alunoSelecionado } = useAlunoContext();
 
   useEffect(() => {
     const mostrarAlunos = async () => {
@@ -27,7 +28,24 @@ export function Menu() {
   }
 
   const handleDeletar = async (id) => {
+    preventDefault();
+        const usuario = {
+            nome,
+            email,
+            telefone,
+            endereco
+        };
 
+        try {
+          const resposta = await fetch(`https://trabalho-finaldw-backend.onrender.com/usuarios/${alunoSelecionado.id}`, {
+            method: "DELET"
+          })
+          
+        } catch (error) {
+          console.error("Houve um erro ", error)
+          alert("Erro ao deletar aluno")
+          
+        }
   }
 
   return (
@@ -72,14 +90,12 @@ export function Menu() {
           </Link>
         </header>
 
-        {/* QUANDO NAO HOUVER ALUNOS */}
         {alunos.length === 0 ? (
           <div className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6">
             <p className="text-gray-500 text-center">Nenhum aluno cadastrado.</p>
           </div>
         ) : (
           <>
-          {/* QUANDO HOUVER ALUNOS */}
             <div className="p-6 flex">
               <p className="text-gray-500 text-center flex-1 mr-4">Nome</p>
               <p className="text-gray-500 text-center flex-1 mr-4">Email</p>
@@ -92,7 +108,7 @@ export function Menu() {
               <div key={aluno.id} className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6 mb-2 flex items-center">
                 <p className="text-gray-500 text-center flex-1 mr-4">{aluno.nome}</p>
                 <p className="text-gray-500 text-center flex-1 mr-4">{aluno.email}</p>
-                <p className="text-gray-500 text-center flex-1 mr-4">{aluno.telefone}1</p>
+                <p className="text-gray-500 text-center flex-1 mr-4">{aluno.telefone}</p>
                 <p className="text-gray-500 text-center flex-1 mr-4">{aluno.endereco}</p>
 
                 <div className="flex gap-4 items-center">
