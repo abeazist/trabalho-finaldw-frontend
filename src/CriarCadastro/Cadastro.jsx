@@ -33,20 +33,21 @@ export function Cadastro() {
       });
       
       if (resposta.status === 201){
-        console.log('passei')
+        //console.log('passei')
         alert("Cadastro concluído com sucesso!!");
   
         setNome("");
         setEmail("");
         setTelefone("");
         setEndereco("");
-      }else {
-        alert(`Erro ao cadastrar: ${resposta.status}`);
+
+      } else {
+          alert(`Erro ao cadastrar: ${resposta.status}`);
       }
       
        //A ok propriedade somente leitura da Responseinterface contém um booleano informando se a resposta foi bem-sucedida (status no intervalo 200-299) ou não. Valor booleano
     } catch (error) {
-      console.log("Erro ao conectar c servidor:", error);
+      //console.log("Erro ao conectar c servidor:", error);
       alert("Erro ao conectar com o servidor.")
     };
   }
