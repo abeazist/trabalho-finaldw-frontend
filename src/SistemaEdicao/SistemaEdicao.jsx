@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Trash, Pencil } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { useAlunoContext } from "../Context/AlunoContext";
 
 export function Menu() {
+
+  const [carregando, setCarregando] = useState(false)
   const { alunos, setAlunos, deletarAluno, setAlunoSelecionado } =
     useAlunoContext();
 
+
   useEffect(() => {
     const mostrarAlunos = async () => {
+
       try {
+        setCarregando(true)
         const resposta = await fetch(
           "https://trabalho-finaldw-backend.onrender.com/usuarios"
         );
@@ -17,6 +22,8 @@ export function Menu() {
         setAlunos(data);
       } catch (error) {
         console.error("Erro ao buscar alunos:", error);
+      } finally {
+        setCarregando(false)
       }
     };
 
@@ -26,13 +33,13 @@ export function Menu() {
   // Função para deletar aluno
   const handleDeletar = async (id) => {
     try {
-      const resposta = await fetch( `https://trabalho-finaldw-backend.onrender.com/usuarios/${id}`, { 
-        method: "DELETE" 
+      const resposta = await fetch(`https://trabalho-finaldw-backend.onrender.com/usuarios/${id}`, {
+        method: "DELETE"
       }
       );
 
       if (resposta.ok) {
-        deletarAluno(id); 
+        deletarAluno(id);
       } else {
         throw new Error("Erro ao deletar aluno.");
       }
@@ -82,46 +89,53 @@ export function Menu() {
           </Link>
         </header>
 
-        {alunos.length === 0 ? (
-          <div className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6">
-            <p className="text-gray-500 text-center">Nenhum aluno cadastrado.</p>
-          </div>
+        {carregando ? (
+          <div className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6 justify-center flex text-md">Carregando...</div>
         ) : (
-          <>
-            <div className="p-6 flex">
-              <p className="text-gray-500 text-center flex-1 mr-4">Nome</p>
-              <p className="text-gray-500 text-center flex-1 mr-4">Email</p>
-              <p className="text-gray-500 text-center flex-1 mr-4">Telefone</p>
-              <p className="text-gray-500 text-center flex-1 mr-32">Endereço</p>
-            </div>
-
-            {alunos.map((aluno) => (
-              <div key={aluno.id} className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6 mb-2 flex items-center">
-                <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.nome}</p>
-                <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.email}</p>
-                <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.telefone}</p>
-                <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.endereco}</p>
-
-                <div className="flex gap-4 items-center">
-                  <button
-                    onClick={() => setAlunoSelecionado(aluno)}
-                    className="text-xs p-1 h-9 gap-2 mr-1"
-                  >
-                    <Link to={`/edicao`}>
-                      <Pencil size={20} color="purple" />
-                    </Link>
-                  </button>
-                  <button
-                    onClick={() => handleDeletar(aluno.id)}
-                    className="text-xs p-1 h-9 gap-2 mr-4"
-                  >
-                    <Trash size={20} color="purple" />
-                  </button>
-                </div>
+            alunos.length === 0 ? (
+              <div className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6">
+                <p className="text-gray-500 text-center">Nenhum aluno cadastrado.</p>
               </div>
-            ))}
-          </>
+            ) : (
+              <>
+                <div className="p-6 flex">
+                  <p className="text-gray-500 text-center flex-1 mr-4">Nome</p>
+                  <p className="text-gray-500 text-center flex-1 mr-4">Email</p>
+                  <p className="text-gray-500 text-center flex-1 mr-4">Telefone</p>
+                  <p className="text-gray-500 text-center flex-1 mr-32">Endereço</p>
+                </div>
+
+                {alunos.map((aluno) => (
+                  <div key={aluno.id} className="bg-gray-100 border border-gray-300 rounded-lg shadow p-6 mb-2 flex items-center">
+                    <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.nome}</p>
+                    <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.email}</p>
+                    <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.telefone}</p>
+                    <p className="text-gray-500 text-center flex-1 mr-4"> {aluno.endereco}</p>
+
+                    <div className="flex gap-4 items-center">
+                      <button
+                        onClick={() => setAlunoSelecionado(aluno)}
+                        className="text-xs p-1 h-9 gap-2 mr-1"
+                      >
+                        <Link to={`/edicao`}>
+                          <Pencil size={20} color="purple" />
+                        </Link>
+                      </button>
+                      <button
+                        onClick={() => handleDeletar(aluno.id)}
+                        className="text-xs p-1 h-9 gap-2 mr-4"
+                      >
+                        <Trash size={20} color="purple" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )
+
         )}
+
+
       </div>
     </div>
   );
