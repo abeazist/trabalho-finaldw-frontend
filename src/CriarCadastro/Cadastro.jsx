@@ -26,6 +26,7 @@ export function Cadastro() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept-Language": "pt"
         },
         body: JSON.stringify(usuario) 
       });

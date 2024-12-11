@@ -19,7 +19,6 @@ createRoutesFromElements(
     <Route path="" element={<Menu />} />
     <Route path="cadastro" element={<Cadastro />} />
     <Route path="edicao" element={<Editar />} />
-    <Route path="edicao/:id" element={<Editar />} />
   </Route>
 )
 )

@@ -107,7 +107,7 @@ export function Menu() {
                     onClick={() => setAlunoSelecionado(aluno)}
                     className="text-xs p-1 h-9 gap-2 mr-1"
                   >
-                    <Link to={`/edicao/${aluno.id}`}>
+                    <Link to={`/edicao`}>
                       <Pencil size={20} color="purple" />
                     </Link>
                   </button>

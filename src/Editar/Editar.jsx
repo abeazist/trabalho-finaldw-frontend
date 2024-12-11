@@ -29,14 +29,15 @@ export default function Editar(){
         };
 
         try {
-            const response = await fetch(`https://trabalho-finaldw-backend.onrender.com/usuarios/${alunoSelecionado.id}`, {
+            const resposta = await fetch(`https://trabalho-finaldw-backend.onrender.com/usuarios/${alunoSelecionado.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
+                    "Accept-Language": "pt"
                 },
                 body: JSON.stringify(usuario)
             })
-            if (response.ok) {
+            if (resposta.ok) {
                 alert("Aluno atualizado com sucesso!")
                 window.location.href = "/"
             } else {
