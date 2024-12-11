@@ -10,8 +10,6 @@ export function Cadastro() {
   const [telefone, setTelefone] = useState("")
   const [endereco, setEndereco] = useState("")
 
-  
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -29,7 +27,7 @@ export function Cadastro() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(usuario)
+        body: JSON.stringify(usuario) 
       });
       
       if (resposta.status === 201){
@@ -51,10 +49,6 @@ export function Cadastro() {
       alert("Erro ao conectar com o servidor.")
     };
   }
-
-
-
-
 
   return (
     <div className="h-screen w-screen bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
@@ -98,14 +92,10 @@ export function Cadastro() {
           type="submit"
           className=" text-xs w-full bg-purple-900 text-white p-1 h-9 rounded-sm">CADASTRAR</button>
           </form>
-          
-
 
           <a className="flex justify-center text-purple-600 py-1 text-sm" href="/"><p>IR PARA O SISTEMA DE EDIÇÃO</p></a>
         </div>
-
       </div>
-
     </div>
   );
 }

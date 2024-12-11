@@ -8,3 +8,7 @@ anotações para estudo para o trabalho
 
 A requisição foi bem sucedida e um novo recurso foi criado como resultado. Esta é normalmente a resposta enviada após as solicitações POST ou algumas solicitações PUT.
 
+
+## JSON
+
+O método JSON. stringify() converte valores em javascript para uma String JSON.

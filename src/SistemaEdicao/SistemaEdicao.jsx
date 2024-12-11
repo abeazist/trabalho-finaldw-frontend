@@ -26,9 +26,9 @@ export function Menu() {
   // Função para deletar aluno
   const handleDeletar = async (id) => {
     try {
-      const resposta = await fetch(
-        `https://trabalho-finaldw-backend.onrender.com/usuarios/${id}`,
-        { method: "DELETE" }
+      const resposta = await fetch( `https://trabalho-finaldw-backend.onrender.com/usuarios/${id}`, { 
+        method: "DELETE" 
+      }
       );
 
       if (resposta.ok) {

@@ -9,7 +9,7 @@ import {
 import "./index.css";
 import { AlunoProvider } from "./Context/AlunoContext";
 
-import { Menu } from './Menu/Menu';
+import { Menu } from './SistemaEdicao/SistemaEdicao';
 import { Cadastro } from './CriarCadastro/Cadastro'; 
 import Editar from "./Editar/Editar";
 
